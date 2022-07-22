@@ -9,6 +9,7 @@ const Navbar = () => {
       <Wrapper>
         <Search>
           <Input placeholder="Search" />
+
           <SearchOutlinedIcon />
         </Search>
         <Button>
@@ -52,6 +53,8 @@ const Search = styled.div`
 const Input = styled.input`
   border: none;
   background-color: transparent;
+  outline: none;
+  color: ${({ theme }) => theme.text};
 `;
 
 const Button = styled.button`
