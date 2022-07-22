@@ -2,13 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const Card = () => {
+const Card = ({ type }) => {
   return (
     <Link to="/video/test" style={{ textDecoration: "none" }}>
-      <Container>
+      <Container type={type}>
         <Image src="https://i9.ytimg.com/vi_webp/k3Vfj-e1Ma4/mqdefault.webp?v=6277c159&sqp=CIjm8JUG&rs=AOn4CLDeKmf_vlMC1q9RBEZu-XQApzm6sA" />
-        <Details>
-          <ChannelImage src="https://yt3.ggpht.com/yti/APfAmoE-Q0ZLJ4vk3vqmV4Kwp0sbrjxLyB8Q4ZgNsiRH=s88-c-k-c0x00ffffff-no-rj-mo" />
+        <Details type={type}>
+          <ChannelImage
+            type={type}
+            src="https://yt3.ggpht.com/yti/APfAmoE-Q0ZLJ4vk3vqmV4Kwp0sbrjxLyB8Q4ZgNsiRH=s88-c-k-c0x00ffffff-no-rj-mo"
+          />
           <Texts>
             <Title>Test Video</Title>
             <ChannelName>Lama Dev</ChannelName>
@@ -26,6 +29,7 @@ const Container = styled.div`
   cursor: pointer;
   display: ${(props) => props.type === "sm" && "flex"};
   gap: 10px;
+  /* background-color: red; */
 `;
 
 const Image = styled.img`
