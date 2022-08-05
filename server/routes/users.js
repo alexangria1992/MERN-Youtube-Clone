@@ -8,11 +8,12 @@ import {
   like,
   dislike,
 } from "../controllers/user.js";
+import { verifyToken } from "../verifyToken.js";
 
 const router = express.Router();
 
 //Update User
-router.put("/:id", update);
+router.put("/:id", verifyToken, update);
 
 // Delete User
 router.delete("/:id", deleteUser);
