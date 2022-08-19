@@ -3,6 +3,8 @@ import styled from "styled-components";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { loginFailure, loginStart, loginSuccess } from "../redux/userSlice";
+import { auth, provider } from "../firebase";
+import { signInWithPopup } from "firebase/auth";
 
 const SignIn = () => {
   const [name, setName] = useState("");
@@ -26,6 +28,14 @@ const SignIn = () => {
     }
   };
 
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {});
+  };
+
   return (
     <Container>
       <Wrapper>
@@ -42,6 +52,7 @@ const SignIn = () => {
         />
         <Button onClick={handleLogin}>Sign In</Button>
         <Title>or</Title>
+        <Button onClick={signInWithGoogle}>Signin with Google</Button>
         <Input
           placeholder="username"
           onChange={(e) => setName(e.target.value)}
